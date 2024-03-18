@@ -21,7 +21,7 @@ async def start(message: types.Message):
 
 @dp.message(Command('end'))
 async def end(message: types.Message):
-    requests.post('http://jasik.alwaysdata.net/clear-ig-session', json={"contactId": message.from_user.id})
+    requests.post('https://jasik.alwaysdata.net/clear-ig-session', json={"contactId": message.from_user.id})
     await message.bot.close()
 
 
@@ -31,12 +31,12 @@ async def message_handler(message: types.Message):
         "message": message.text,
         "contactId": message.from_user.id
     }
-    res = requests.post('http://jasik.alwaysdata.net/qazai', json=req)
+    res = requests.post('https://jasik.alwaysdata.net/qazai', json=req)
     await message.answer(res.json()['message'])
 
 
 async def main():
-    bot = Bot(token=TOKEN)
+    bot = Bot(token='6836762747:AAHnwXUj_QWwJTnpVmpq-kw6xROpvLVCnY0')
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     await dp.start_polling(bot)
 
