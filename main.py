@@ -21,7 +21,9 @@ async def start(message: types.Message):
 
 @dp.message(Command('end'))
 async def end(message: types.Message):
-    requests.post('https://jasik.alwaysdata.net/clear-ig-session', json={"contactId": message.from_user.id})
+    requests.post('https://jasik.alwaysdata.net/clear-ig-session',
+                  json={"contactId": message.from_user.id})
+    await message.answer("Сессия завершена. Для начала новой сессии напишите /start")
     await message.bot.close()
 
 
